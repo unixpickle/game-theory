@@ -10,8 +10,11 @@
 //
 // The output of the program suggests that the amount of
 // effort put in increases as b increases.
-// However, this the output is less conclusive when we
-// start with a random initialization.
+// However, the output is less conclusive when we start
+// with a random init (see
+// https://gist.github.com/unixpickle/6bc5e05c1e57864493ea21dba63ee3b0
+// or
+// https://gist.github.com/jjennings955/b4bb2a28e3216be3d82c5b60545ceda7).
 
 package main
 
