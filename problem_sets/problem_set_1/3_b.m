@@ -26,8 +26,9 @@ end
 
 for i=2:3
   i
-  strict_dom = all(all(payoffs(i,:,:) > payoffs(1,:,:)))
-  weak_dom = all(all(payoffs(i,:,:) >= payoffs(1,:,:)))
+  gt = payoffs(i,:,:) > payoffs(1,:,:);
+  strict_dom = all(all(gt))
+  weak_dom = all(all(payoffs(i,:,:) >= payoffs(1,:,:))) && any(any(gt))
 end
 
 % Delete strategies 1 and 10.
@@ -37,6 +38,7 @@ printf('\n\nTrying on reduced game...\n\n');
 
 for i=2:8
   i
-  strict_dom = all(all(payoffs(i,:,:) > payoffs(1,:,:)))
-  weak_dom = all(all(payoffs(i,:,:) >= payoffs(1,:,:)))
+  gt = payoffs(i,:,:) > payoffs(1,:,:);
+  strict_dom = all(all(gt))
+  weak_dom = all(all(payoffs(i,:,:) >= payoffs(1,:,:))) && any(any(gt))
 end
