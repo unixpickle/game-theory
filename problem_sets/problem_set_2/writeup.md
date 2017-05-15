@@ -103,4 +103,4 @@ All values less than 5 are strictly dominated, because you can always make $5 by
 
 ## Part c
 
-By using whole numbers, the game in part b gets another NE, namely `(6,6)`. This is because neither player can undercut 6 without playing 5, and playing 5 won't get them more money than they were already getting anyway.
+By using whole numbers, the game in part b gets another three NEs, namely `(6,6)`, `(5,6)`, and `(6,5)`. This is because neither player can undercut 6 without playing 5, and playing 5 won't get them more money than they were already getting anyway.
