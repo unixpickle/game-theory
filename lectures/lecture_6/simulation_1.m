@@ -1,14 +1,11 @@
-% Iteratively search for an equilibrium in a duopoly.
+% Duopoly simulation where firms pick both prices and
+% quantities simultaneously.
 %
-% This model assumes that demand can be divided even when
+% This model assumes that demand can be divided, even when
 % there are two prices on the market.
 % In particular, it assumes that the cheapest consumers
 % make their purchases first, then the ones willing to pay
-% more end up paying fmore.
-%
-% I paused the video at 27:10 to see if I could simulate a
-% market in such a way as to abide by the Cournot duopoly
-% game.
+% more end up paying more.
 %
 % Turns out, the Nash Equilibrium I found in the duopoly
 % game of (16, 16) is not a Nash Equilibrium in this
