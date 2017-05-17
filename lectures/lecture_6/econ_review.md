@@ -28,8 +28,8 @@ c = p
 
 Notice that the above equation only makes sense if `a >= c`. Intuitively, if `a < c`, it costs more to make a single item than any consumer is willing to pay for that item.
 
-## Only one price?
+## Cournot model
 
-As professor Polak presents it, `p` is the same for firm 1 and firm 2. Why is this a valid model? After all, the firms really get to decide both price *and* quantity. In perfect competition, we said that firms could not choose their own prices because they would keep trying to undercut each other. In a Cournot duopoly, we must revise our assumptions.
+In the perfect competition model, we assume that firms compete in prices. In a Cournot model, we instead assume that firms choose their quantities and let the market determine the price. This might seem odd or arbitrary, but it makes sense if we assume that output is much more difficult to change than price. Under this assumption, firms are really playing a two step game: first they choose quantity (slow), then they choose price (fast). In the second game, once quantities are fixed, price competition will bring the firms down to a price determined by the market. This can probably be shown via iterative deletion in the price game (with fixed quantities).
 
-My understanding of this model is that it is a two-step game. First, the firms decide how much to produce. After that production, they play another game to decide their prices. I have yet to figure out how, but I suspect you can use this two-step model to explain why the prices are determined by the free market.
+It is clear why hard-to-change quantities would make the market less Pareto efficient than perfect competition. Suppose that two firms are both producing at the perfect competition equilibrium. If quantities were easy to change, then neither firm can raise its price. If firm 1 does raise its price, then firm 2 will simply increase its output and completely steal firm 1's revenue. However, if quantities are hard to change, then firm 2 cannot increase its output and firm 1 will still sell to some consumers at the higher price (albeit in lower quantities).
