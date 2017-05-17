@@ -1,8 +1,5 @@
-% Similar to simulation 1, except that demand is split up
-% in a different way when there's two prices.
-% In this simulation, the people willing to pay the most
-% will buy the product first, thus getting it at the lower
-% of the two prices.
+% Similar to simulation 2, except that price is quantized
+% and there are special rules for equal prices.
 
 global a b c;
 a = 50;
@@ -34,21 +31,27 @@ function [sold_quantities] = joint_demand(prices, quantities)
   if prices(2) < prices(1)
     sold_quantities = flipud(joint_demand(flipud(prices), flipud(quantities)));
     return
+  elseif prices(2) == prices(1)
+    % Split sold quantities in proportion to production.
+    q = demand_for_price(prices(1));
+    frac_1 = quantities(1) / sum(quantities);
+    sold_quantities = min(q * [frac_1; 1-frac_1], quantities);
+    return
   end
 
-  % Use the undercutting model, where player 1 gets as
-  % much demand as possible and then player 2 gets as
-  % much demand at his higher price as is possible.
+  % Use an undercutting model, which differs from the
+  % one in simulation_1.
+  % This model is harsher for the player with the
+  % higher price.
   sold_quantities = [
     min(demand_for_price(prices(1)), quantities(1));
-    demand_for_price(prices(2));
+    0;
   ];
-  one_only = demand_for_price(prices(1)) - demand_for_price(prices(2));
-  if sold_quantities(1) > one_only
-    stolen = sold_quantities(1) - one_only;
-    sold_quantities(2) -= stolen;
+
+  leftover = demand_for_price(prices(2)) - sold_quantities(1);
+  if leftover > 0
+    sold_quantities(2) = min(leftover, quantities(2));
   end
-  sold_quantities = min(sold_quantities, quantities);
 end
 
 function [profit] = payoffs(prices, quantities)
@@ -68,7 +71,7 @@ function [new_prices, new_quantities] = optimize_player(prices, quantities)
   new_prices = prices;
   new_quantities = quantities;
 
-  new_prices(idx) = rand()*price_for_demand(0);
+  new_prices(idx) = round(rand()*price_for_demand(0));
   new_quantities(idx) = rand()*demand_for_price(0);
 
   new_u = payoffs(new_prices, new_quantities)(idx);
@@ -79,8 +82,8 @@ function [new_prices, new_quantities] = optimize_player(prices, quantities)
   end
 end
 
-prices = rand(2, 1) + 10;
-quantities = rand(2, 1) + 10;
+prices = round(rand(2, 1) * 10);
+quantities = rand(2, 1)*10;
 
 % Test with a Nash Equilibrium in the real game...
 %     prices = price_for_demand(16+16) * [1; 1];
